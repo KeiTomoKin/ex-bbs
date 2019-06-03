@@ -3,7 +3,7 @@ package com.example.domain;
 import java.util.List;
 
 /**
- * 記事を表すドメイン
+ * 記事を表すドメイン.
  * 
  * @author keita.tomooka
  *

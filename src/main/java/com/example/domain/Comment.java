@@ -1,7 +1,7 @@
 package com.example.domain;
 
 /**
- * コメントを表すドメイン
+ * コメントを表すドメイン.
  * 
  * @author keita.tomooka
  *
