@@ -18,7 +18,7 @@
 		<input type="submit" value="記事投稿">
 	</form>
 	<hr>
-	<div th:each="article:${articleList}">
+	<div th:each="article,status:${articleList}">
 		<p>
 			投稿ID：<span th:text="${article.id}">ID</span>
 		</p>
@@ -48,7 +48,7 @@
 				<label for="content">コメント:</label>
 				<textarea rows="" cols="" id="content" name="content"></textarea>
 			</p>
-			<input type="submit" value="コメント投稿">
+			<input type="hidden" th:name="articleId" th:value="${status.count}"> <input type="submit" value="コメント投稿">
 		</form>
 		<hr>
 	</div>

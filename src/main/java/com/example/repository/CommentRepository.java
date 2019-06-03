@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import com.example.domain.Article;
 import com.example.domain.Comment;
 
 /**
@@ -45,7 +44,7 @@ public class CommentRepository {
 		List<Comment> commentList = template.query(sql, param, COMMENT_ROW_MAPPER);
 		return commentList;
 	}
-	
+
 	/**
 	 * コメント情報を追加する.
 	 * 

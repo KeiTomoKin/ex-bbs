@@ -1,4 +1,4 @@
-package com.example.Form;
+package com.example.form;
 
 /**
  * 記事のフォームクラス.
