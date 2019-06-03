@@ -14,7 +14,6 @@ import com.example.Form.ArticleForm;
 import com.example.domain.Article;
 import com.example.repository.ArticleRepository;
 
-
 /**
  * 記事関連機能の処理を行うコントローラ.
  * 
