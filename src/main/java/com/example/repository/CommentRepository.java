@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import com.example.domain.Article;
 import com.example.domain.Comment;
 
 /**
@@ -18,7 +20,7 @@ import com.example.domain.Comment;
  *
  */
 @Repository
-public class CommnetRepository {
+public class CommentRepository {
 	private RowMapper<Comment> COMMENT_ROW_MAPPER = (rs, i) -> {
 		Comment comment = new Comment();
 		comment.setId(rs.getInt("id"));
@@ -42,5 +44,16 @@ public class CommnetRepository {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("articleId", articleId);
 		List<Comment> commentList = template.query(sql, param, COMMENT_ROW_MAPPER);
 		return commentList;
+	}
+	
+	/**
+	 * コメント情報を追加する.
+	 * 
+	 * @param comment 追加するコメント情報
+	 */
+	public void insert(Comment comment) {
+		SqlParameterSource param = new BeanPropertySqlParameterSource(comment);
+		String insertSql = "INSERT INTO comments(name,content,article_id) VALUES (:name,:content,:articleId)";
+		template.update(insertSql, param);
 	}
 }

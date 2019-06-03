@@ -32,7 +32,5 @@ public class ArticleForm {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
 
 }
