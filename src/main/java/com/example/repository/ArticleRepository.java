@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -48,6 +47,7 @@ public class ArticleRepository extends Article {
 		List<Article> articleList = template.query(sql, ARTICLE_ROW_MAPPER);
 		for(int i= 0;i<articleList.size();i++) {
 			int articleId=i+1;
+			System.out.println(articleId);
 			List<Comment> commentList = commnetRepository.findByArticleId(articleId);
 			articleList.get(i).setCommentList(commentList);
 		}

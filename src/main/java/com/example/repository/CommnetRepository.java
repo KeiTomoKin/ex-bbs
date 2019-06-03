@@ -24,7 +24,7 @@ public class CommnetRepository {
 		comment.setId(rs.getInt("id"));
 		comment.setName(rs.getString("name"));
 		comment.setContent(rs.getString("content"));
-		comment.setArticleId(rs.getInt("articleId"));
+		comment.setArticleId(rs.getInt("article_id"));
 		return comment;
 	};
 
@@ -38,7 +38,7 @@ public class CommnetRepository {
 	 * @return コメント情報のリスト
 	 */
 	public List<Comment> findByArticleId(int articleId) {
-		String sql = "SELECT id,name,content,article_id FROM commnets WHERE article_id = :articleId ORDER BY id DESC";
+		String sql = "SELECT id,name,content,article_id FROM comments WHERE article_id=:articleId ORDER BY id DESC";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("articleId", articleId);
 		List<Comment> commentList = template.query(sql, param, COMMENT_ROW_MAPPER);
 		return commentList;

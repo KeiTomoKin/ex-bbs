@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>掲示板アプリケーション</h1>
-	<form th:action="@{/bbs/insert}" th:object="${articleForm}">
+	<form th:action="@{/bbs/insertArticle}" th:object="${articleForm}">
 		<p>
 			<label for="name">投稿者名:</label> <input type="text" id="name"
 				name="name">
@@ -28,6 +28,29 @@
 		<p>
 			投稿内容：<span th:text="${article.content}">ID</span>
 		</p>
+		<div th:each="comment:${article.commentList}">
+			<p>
+				コメントID：<span th:text="${comment.id}">ID</span>
+			</p>
+			<p>
+				コメント者名：<span th:text="${comment.name}">ID</span>
+			</p>
+			<p>
+				コメント内容：<span th:text="${comment.content}">ID</span>
+			</p>
+		</div>
+		<form th:action="@{/bbs/insertComment}" th:object="${commentForm}">
+			<p>
+				<label for="name">名前:</label> <input type="text" id="name"
+					name="name">
+			</p>
+			<p>
+				<label for="content">コメント:</label>
+				<textarea rows="" cols="" id="content" name="content"></textarea>
+			</p>
+			<input type="submit" value="コメント投稿">
+		</form>
+		<hr>
 	</div>
 </body>
 </html>

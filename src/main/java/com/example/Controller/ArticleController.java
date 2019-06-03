@@ -39,13 +39,18 @@ public class ArticleController {
 	 */
 	@RequestMapping("")
 	public String index(Model model) {
-		List<Article> articleList = new ArrayList<Article>();
-		articleList = articleRepository.findAll();
+		List<Article> articleList = articleRepository.findAll();
 		model.addAttribute("articleList", articleList);
 		return "bbs";
 	}
 
-	@RequestMapping("/insert")
+	/**
+	 * 記事を追加して、記事一覧画面を更新する。
+	 * 
+	 * @param form 入力	内容
+	 * @return 記事一覧画面画
+	 */
+	@RequestMapping("/insertArticle")
 	public String insert(ArticleForm form) {
 		Article article = new Article();
 		BeanUtils.copyProperties(form, article);
