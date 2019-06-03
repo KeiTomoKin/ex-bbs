@@ -16,11 +16,11 @@ public class Article {
 	/** 投稿内容 */
 	private String content;
 	/** コンテント */
-	private List<Comment> cmmentList;
+	private List<Comment> commentList;
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", cmmentList=" + cmmentList + "]";
+		return "Article [id=" + id + ", name=" + name + ", content=" + content + ", cmmentList=" + commentList + "]";
 	}
 
 	public Integer getId() {
@@ -47,12 +47,12 @@ public class Article {
 		this.content = content;
 	}
 
-	public List<Comment> getCmmentList() {
-		return cmmentList;
+	public List<Comment> getCommentList() {
+		return commentList;
 	}
 
-	public void setCmmentList(List<Comment> cmmentList) {
-		this.cmmentList = cmmentList;
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
 	}
 
 }
