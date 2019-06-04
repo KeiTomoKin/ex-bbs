@@ -28,6 +28,10 @@
 		<p>
 			投稿内容：<span th:text="${article.content}">ID</span>
 		</p>
+		<form th:action="@{/bbs/deleteArticle}" method="post">
+			<input type="hidden" th:name="articleId" th:value="${article.id}">
+			<input type="submit" value="記事削除">
+		</form>
 		<div th:each="comment:${article.commentList}">
 			<p>
 				コメントID：<span th:text="${comment.id}">ID</span>
@@ -48,7 +52,8 @@
 				<label for="content">コメント:</label>
 				<textarea rows="" cols="" id="content" name="content"></textarea>
 			</p>
-			<input type="hidden" th:name="articleId" th:value="${status.count}"> <input type="submit" value="コメント投稿">
+			<input type="hidden" th:name="articleId" th:value="${article.id}">
+			<input type="submit" value="コメント投稿">
 		</form>
 		<hr>
 	</div>

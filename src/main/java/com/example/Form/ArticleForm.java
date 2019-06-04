@@ -1,5 +1,7 @@
 package com.example.form;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * 記事のフォームクラス.
  * 
@@ -8,8 +10,10 @@ package com.example.form;
  */
 public class ArticleForm {
 	/** 投稿者名 */
+	@NotBlank(message="投稿者名を入力してください")
 	private String name;
 	/** 投稿内容 */
+	@NotBlank(message="投稿内容を入力してください")
 	private String content;
 
 	@Override

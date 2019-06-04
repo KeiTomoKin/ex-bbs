@@ -1,5 +1,7 @@
 package com.example.form;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * コメントのフォームクラス.
  * @author keita.tomooka
@@ -7,8 +9,10 @@ package com.example.form;
  */
 public class CommentForm {
 	/** 名前 */
+	@NotBlank(message="名前を入力してください")
 	private String name;
 	/** コンテント */
+	@NotBlank(message="コメントを入力してください")
 	private String content;
 	/** 投稿ID */
 	private String articleId;
