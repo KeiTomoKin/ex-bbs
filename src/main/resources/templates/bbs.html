@@ -9,12 +9,12 @@
 	<form th:action="@{/bbs/insertArticle}" th:object="${articleForm}">
 		<p>
 			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red">エラー！</span><br>
-			<label for="name">投稿者名:</label> <input type="text" id="name" name="name">
+			<label for="name">投稿者名:</label> <input type="text" id="name" name="name" th:field="*{name}">
 		</p>
 		<p>
 			<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color:red">エラー！</span><br>
 			<label for="content">投稿内容:</label>
-			<textarea rows="" cols="" id="content" name="content"></textarea>
+			<textarea rows="" cols="" id="content" name="content" th:field="*{content}"></textarea>
 		</p>
 		<input type="submit" value="記事投稿">
 	</form>
@@ -47,12 +47,12 @@
 		<form th:action="@{/bbs/insertComment}" th:object="${commentForm}">
 			<p>			
 			<span th:if="${#fields.hasErrors('name')} AND ${article.id}==${commentForm.articleId}" th:errors="*{name}" style="color:red">エラー！</span><br>
-				<label for="name">名前:</label> <input type="text" id="name" name="name">
+				<label for="name">名前:</label> <input type="text" id="name" name="name" th:field="*{name}">
 			</p>
 			<p>
 			<span th:if="${#fields.hasErrors('content')} AND ${article.id}==${commentForm.articleId}" th:errors="*{content}" style="color:red">エラー！</span><br>
 				<label for="content">コメント:</label>
-				<textarea rows="" cols="" id="content" name="content"></textarea>
+				<textarea rows="" cols="" id="content" name="content" th:field="*{content}"></textarea>
 			</p>
 			<input type="hidden" th:name="articleId" th:value="${article.id}">
 			<input type="submit" value="コメント投稿">

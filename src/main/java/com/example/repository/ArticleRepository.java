@@ -127,7 +127,7 @@ public class ArticleRepository {
 	 * @param id 削除する記事情報
 	 */
 	public void deleteById(int id) {
-		String deleteSql = "DELETE FROM articles WHERE id=:id";
+		String deleteSql = "WITH deleted AS (DELETE FROM articles WHERE id = :id RETURNING id) DELETE FROM comments WHERE article_id IN (SELECT id FROM deleted);";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		template.update(deleteSql, param);
 	}
